@@ -30,9 +30,8 @@
 #myVideo {
   position: relative;
   z-index: -1;
-  width: 100%;
+  width: 70%;
   top: 0;
-  max-height: 50%;
 }
 
 /* Add some content at the bottom of the video/page */
