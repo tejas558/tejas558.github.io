@@ -32,8 +32,7 @@
   z-index: -1;
   width: 100%;
   top: 0;
-  height: 100%;
-  max-height: 80%;
+  max-height: 50%;
 }
 
 /* Add some content at the bottom of the video/page */
