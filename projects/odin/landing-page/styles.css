@@ -9,7 +9,7 @@
     float: left;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 30px 16px;
     text-decoration: none;
     font-size: 17px;
   }
@@ -22,7 +22,7 @@
   
   /* Add a color to the active/current link */
   .topnav a.active {
-    background-color: #04AA6D;
+    background-color: #a5220b;
     color: white;
   }
 
