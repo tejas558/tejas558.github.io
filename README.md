@@ -1,3 +1,3 @@
 # Personal Website
 
-@ tejas558.github.io
+https://tejas558.github.io
