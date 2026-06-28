@@ -356,6 +356,10 @@ section p:last-child {
   font-weight: 500;
 }
 
+.section-footer {
+  margin-top: 24px;
+}
+
 /* Placeholder */
 
 .placeholder {
