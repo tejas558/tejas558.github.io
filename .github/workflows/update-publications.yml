@@ -1,0 +1,29 @@
+name: Update Publications
+
+on:
+  schedule:
+    - cron: '0 6 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch Google Scholar publications
+        uses: sxlllslgh/google-scholar-fetcher@v1
+        with:
+          google-scholar-id: sLSmk9AAAAAJ
+          record-file: data/publications.json
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/publications.json
+          git diff --staged --quiet || git commit -m "Update publications from Google Scholar"
+          git push

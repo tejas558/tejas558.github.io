@@ -1,0 +1,34 @@
+[
+  {
+    "title": "FairDRAM: QoS-Aware Memory Scheduling for CPU–AI Co-Execution",
+    "date": [2026],
+    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sLSmk9AAAAAJ&citation_for_view=sLSmk9AAAAAJ:IjCSPb-OGe4C",
+    "authors": ["T Mahajan"],
+    "journal": "",
+    "citations": 0
+  },
+  {
+    "title": "PromptLeakDetector: Runtime Detection of System Prompt and Context Leakage in LLM Applications",
+    "date": [2026],
+    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sLSmk9AAAAAJ&citation_for_view=sLSmk9AAAAAJ:UeHWp8X0CEIC",
+    "authors": ["T Mahajan"],
+    "journal": "GitHub repository",
+    "citations": 0
+  },
+  {
+    "title": "RAGGuard: A Context-Aware Privacy Firewall for Retrieval-Augmented Generation",
+    "date": [2026],
+    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sLSmk9AAAAAJ&citation_for_view=sLSmk9AAAAAJ:qjMakFHDy7sC",
+    "authors": ["T Mahajan"],
+    "journal": "",
+    "citations": 0
+  },
+  {
+    "title": "Comparative differential expression analysis: PyDESeq2 vs. InMoose edgeR for bulk RNA-seq in asthma airway smooth muscle",
+    "date": [2025],
+    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sLSmk9AAAAAJ&citation_for_view=sLSmk9AAAAAJ:9yKSN-GCB0IC",
+    "authors": ["T Mahajan"],
+    "journal": "ResearchGate",
+    "citations": 0
+  }
+]

@@ -2,321 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tejas Mahajan - Software Engineer & PhD Student</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
-
-  <style>
-    :root {
-      --red: #8B0000;
-      --gold: #D4AF37;
-      --background: #400000;
-      --light-gold: #ffeaa7;
-      --white: #fff;
-      --text-color: #f9f4f0;
-      --glass-bg: rgba(0, 0, 0, 0.3);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--background);
-      color: var(--text-color);
-      overflow-x: hidden;
-    }
-
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 50px 20px;
-    }
-
-    .profile {
-      background: var(--glass-bg);
-      border-radius: 20px;
-      padding: 40px;
-      box-shadow: 0 0 20px var(--gold);
-      backdrop-filter: blur(10px);
-    }
-
-    .profile img {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      border: 4px solid var(--gold);
-      margin-bottom: 20px;
-      transition: transform 0.3s ease;
-    }
-
-    .profile img:hover {
-      transform: scale(1.05);
-    }
-
-    h1 {
-      color: var(--gold);
-      font-size: 2.5em;
-    }
-
-    .profile-subtitle {
-      color: var(--light-gold);
-      margin-bottom: 20px;
-    }
-
-    .section {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 30px;
-      border-radius: 15px;
-      margin: 40px 0;
-      box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-    }
-
-    .section h2 {
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-
-    .skills-grid, .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .skill-card, .project-card {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid var(--gold);
-      color: var(--text-color);
-    }
-
-    .skill-card h3, .project-card h3 {
-      color: var(--light-gold);
-    }
-
-    .social-links {
-      margin-top: 30px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .social-link {
-      background: var(--gold);
-      color: var(--background);
-      padding: 12px 24px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-
-    .social-link:hover {
-      transform: scale(1.05);
-      background: var(--light-gold);
-    }
-
-    .social-link i {
-      margin-right: 8px;
-    }
-
-    .contact-info {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .contact-info p {
-      color: var(--text-color);
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: var(--light-gold);
-      margin-top: 50px;
-    }
-
-    @media (max-width: 768px) {
-      .skills-grid, .projects {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tejas Mahajan — PhD student in Computer Science, aspiring quantitative researcher and software engineer." />
+  <title>Tejas Mahajan</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
-  <canvas id="particleCanvas"></canvas>
 
-  <div class="container">
-    <section class="hero">
-      <div class="profile" data-aos="fade-up">
-        <img src="https://avatars.githubusercontent.com/u/88541385" alt="Tejas Mahajan" class="floating" />
-        <h1>Tejas Mahajan</h1>
-        <p class="profile-subtitle">PhD Student in Computer Science @ UCF | Software Engineer</p>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="index.html" class="site-name">Tejas Mahajan</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
+      <nav>
+        <ul class="site-nav">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="cv.html">CV</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-        <div class="section" data-aos="fade-up" data-aos-delay="100">
-          <h2>👋 About Me</h2>
-          <p>I'm a passionate software engineer pursuing my PhD in Computer Science at the University of Central Florida. My research explores computational biology, and I love building elegant, efficient software. I'm experienced with high-performance programming in C++ and skilled in full-stack web development.</p>
-        </div>
-
-        <div class="section" data-aos="fade-up" data-aos-delay="200">
-          <h2>🛠 Tech Stack</h2>
-          <div class="skills-grid">
-            <div class="skill-card"><h3>Languages</h3><p>C++, Python, JavaScript, TypeScript</p></div>
-            <div class="skill-card"><h3>Web Development</h3><p>Next.js, React, Node.js, Tailwind CSS</p></div>
-            <div class="skill-card"><h3>Databases</h3><p>PostgreSQL, MongoDB, Supabase</p></div>
-            <div class="skill-card"><h3>Tools & Platforms</h3><p>Git, Docker, AWS, Linux</p></div>
-          </div>
-        </div>
-
-        <div class="section" data-aos="fade-up" data-aos-delay="300">
-          <h2>🚀 Featured Projects</h2>
-          <div class="projects">
-            <div class="project-card"><h3>Real-Time IRS Optimization</h3><p>Deep learning-based method for optimizing Intelligent Reflective Surfaces</p></div>
-            <div class="project-card"><h3>Lifestyle Tracker App</h3><p>Next.js app using Tailwind and Supabase to help users track habits visually</p></div>
-            <div class="project-card"><h3>Quantitative Finance Toolkit</h3><p>High-performance C++ libraries for financial analytics</p></div>
-          </div>
-        </div>
-
-        <div class="section" data-aos="fade-up" data-aos-delay="400">
-          <h2>📚 Current Focus</h2>
-          <ul style="list-style: none; text-align: left;">
-            <li>🔭 Computational Biology Research</li>
-            <li>🌱 Exploring Deep Learning Techniques</li>
-            <li>💡 High-Performance Computing</li>
-            <li>📈 Open-Source Contributions</li>
-          </ul>
-        </div>
-
-        <div class="social-links" data-aos="fade-up" data-aos-delay="500">
-          <a href="https://www.linkedin.com/in/tejas558" class="social-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
-          <a href="https://github.com/tejas558" class="social-link"><i class="fab fa-github"></i> GitHub</a>
-          <a href="https://leetcode.com/u/tejas558/" class="social-link"><i class="fas fa-code"></i> LeetCode</a>
-          <a href="https://codeforces.com/profile/tejas558xx" class="social-link"><i class="fas fa-laptop-code"></i> CodeForces</a>
-          <a href="https://www.codechef.com/users/tejas558" class="social-link"><i class="fas fa-code"></i> CodeChef</a>
-        </div>
-
-        <div class="contact-info" data-aos="fade-up" data-aos-delay="600">
-          <h2>📫 Let's Connect!</h2>
-          <p>Email: epqjp5v9@anonaddy.me</p>
-          <p>Location: Orlando, FL</p>
-          <p>⭐ Star my GitHub if you like what you see!</p>
+  <main>
+    <div class="intro">
+      <div class="intro-header">
+        <img
+          src="https://avatars.githubusercontent.com/u/88541385"
+          alt="Tejas Mahajan"
+          class="avatar"
+        />
+        <div class="intro-text">
+          <h1>Tejas Mahajan</h1>
+          <p class="tagline">Aspiring Quantitative Researcher &amp; Software Engineer</p>
+          <p class="affiliation">PhD Student in Computer Science · University of Central Florida</p>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
 
-  <footer>
-    <p>&copy; 2025 Tejas Mahajan. All rights reserved.</p>
+    <section>
+      <h2>About</h2>
+      <p>
+        I am a PhD student in Computer Science at the University of Central Florida,
+        working at the intersection of computational research and software engineering.
+        My academic interests span quantitative methods, high-performance computing, and
+        machine learning applied to scientific problems.
+      </p>
+      <p>
+        Alongside research, I build reliable, efficient software — from systems-level
+        C++ libraries to full-stack web applications. I am drawn to problems that
+        demand both mathematical rigor and clean engineering.
+      </p>
+    </section>
+
+    <section>
+      <h2>Interests</h2>
+      <ul class="clean-list">
+        <li>Quantitative finance &amp; stochastic modeling</li>
+        <li>Computational biology &amp; scientific computing</li>
+        <li>Deep learning &amp; optimization</li>
+        <li>High-performance systems (C++, parallel computing)</li>
+        <li>Open-source software &amp; reproducible research</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Links</h2>
+      <div class="links-grid">
+        <a href="https://scholar.google.com/citations?user=sLSmk9AAAAAJ&hl=en" class="link-item" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://www.researchgate.net/profile/tejas-Mahajan-5" class="link-item" target="_blank" rel="noopener">ResearchGate</a>
+        <a href="https://github.com/tejas558" class="link-item" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/tejas558" class="link-item" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/tejas558" class="link-item" target="_blank" rel="noopener">X</a>
+        <a href="https://leetcode.com/u/tejas558/" class="link-item" target="_blank" rel="noopener">LeetCode</a>
+        <a href="https://codeforces.com/profile/tejas558xx" class="link-item" target="_blank" rel="noopener">Codeforces</a>
+        <a href="https://www.codechef.com/users/tejas558" class="link-item" target="_blank" rel="noopener">CodeChef</a>
+        <a href="mailto:epqjp5v9@anonaddy.me" class="link-item">Email</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p class="contact-line">
+        <a href="mailto:epqjp5v9@anonaddy.me">epqjp5v9@anonaddy.me</a>
+        · Orlando, FL
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Tejas Mahajan</p>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000, once: true });
-
-    // Particle animation
-    const canvas = document.getElementById("particleCanvas");
-    const ctx = canvas.getContext("2d");
-    let w = (canvas.width = window.innerWidth);
-    let h = (canvas.height = window.innerHeight);
-    canvas.style.pointerEvents = "none";
-
-    window.addEventListener("resize", () => {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    });
-
-    const particles = [];
-
-    class Particle {
-      constructor(x, y, dx, dy, r, life, color) {
-        this.x = x;
-        this.y = y;
-        this.dx = dx;
-        this.dy = dy;
-        this.r = r;
-        this.life = life;
-        this.color = color;
-      }
-
-      update() {
-        this.x += this.dx;
-        this.y += this.dy;
-        this.life -= 1;
-      }
-
-      draw(ctx) {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-      }
-    }
-
-    window.addEventListener("mousemove", (e) => {
-      for (let i = 0; i < 2; i++) {
-        particles.push(
-          new Particle(
-            e.clientX,
-            e.clientY,
-            (Math.random() - 0.5) * 2,
-            (Math.random() - 0.5) * 2,
-            2 + Math.random() * 2,
-            50 + Math.random() * 50,
-            "rgba(212, 175, 55, 0.7)"
-          )
-        );
-      }
-    });
-
-    setInterval(() => {
-      particles.push(
-        new Particle(
-          Math.random() * w,
-          Math.random() * h,
-          (Math.random() - 0.5) * 0.5,
-          (Math.random() - 0.5) * 0.5,
-          1 + Math.random() * 2,
-          100 + Math.random() * 50,
-          "rgba(255, 215, 0, 0.2)"
-        )
-      );
-    }, 100);
-
-    function animate() {
-      ctx.clearRect(0, 0, w, h);
-      for (let i = particles.length - 1; i >= 0; i--) {
-        const p = particles[i];
-        p.update();
-        p.draw(ctx);
-        if (p.life <= 0) particles.splice(i, 1);
-      }
-      requestAnimationFrame(animate);
-    }
-
-    animate();
-  </script>
+  <script src="js/nav.js"></script>
 </body>
 </html>
