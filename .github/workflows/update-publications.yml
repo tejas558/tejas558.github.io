@@ -15,11 +15,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch Google Scholar publications
-        uses: sxlllslgh/google-scholar-fetcher@v1
+      - uses: actions/setup-python@v5
         with:
-          google-scholar-id: sLSmk9AAAAAJ
-          record-file: data/publications.json
+          python-version: '3.12'
+
+      - name: Fetch Google Scholar publications (via SerpAPI)
+        env:
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+        run: python scripts/fetch_publications.py
 
       - name: Commit if changed
         run: |
