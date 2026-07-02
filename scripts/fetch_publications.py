@@ -1,42 +1,28 @@
 #!/usr/bin/env python3
-"""Fetch publications from Google Scholar via SerpAPI and write data/publications.json.
+"""Fetch publications from Google Scholar and write data/publications.json.
 
-Requires the SERPAPI_KEY environment variable. Exits non-zero without writing if
-the API call fails or returns no articles, so a bad response never clobbers the
-existing publications list.
+Uses the `scholarly` library routed through free public proxies so it works from
+GitHub Actions runners, whose datacenter IPs Google Scholar otherwise blocks.
+
+Retries with fresh proxies a few times. If every attempt fails (or no
+publications come back), it exits non-zero WITHOUT writing, so a blocked run
+never clobbers the existing publications list.
 """
 
 import json
 import os
 import sys
-import urllib.parse
-import urllib.request
+import time
+
+from scholarly import ProxyGenerator, scholarly
 
 SCHOLAR_ID = "sLSmk9AAAAAJ"
+MAX_ATTEMPTS = 4
 OUTPUT_FILE = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
     "data",
     "publications.json",
 )
-
-
-def fetch_articles(api_key):
-    params = {
-        "engine": "google_scholar_author",
-        "author_id": SCHOLAR_ID,
-        "num": 100,
-        "sort": "pubdate",
-        "hl": "en",
-        "api_key": api_key,
-    }
-    url = "https://serpapi.com/search.json?" + urllib.parse.urlencode(params)
-    with urllib.request.urlopen(url, timeout=60) as resp:
-        payload = json.load(resp)
-
-    if payload.get("error"):
-        raise RuntimeError(f"SerpAPI error: {payload['error']}")
-
-    return payload.get("articles", [])
 
 
 def to_year(value):
@@ -46,31 +32,57 @@ def to_year(value):
         return None
 
 
-def normalize(article):
-    authors = article.get("authors", "")
-    author_list = [a.strip() for a in authors.split(",") if a.strip()] if authors else []
-    year = to_year(article.get("year"))
-    cited_by = article.get("cited_by", {}) or {}
+def normalize(pub):
+    bib = pub.get("bib", {}) or {}
+    year = to_year(bib.get("pub_year"))
+    authors = bib.get("author") or "T Mahajan"
+    author_list = [a.strip() for a in authors.replace(" and ", ",").split(",") if a.strip()]
+    pub_id = pub.get("author_pub_id", "")
+    link = (
+        f"https://scholar.google.com/citations?view_op=view_citation"
+        f"&hl=en&user={SCHOLAR_ID}&citation_for_view={pub_id}"
+        if pub_id
+        else pub.get("pub_url", "")
+    )
     return {
-        "title": article.get("title", "").strip(),
+        "title": (bib.get("title") or "").strip(),
         "date": [year] if year else [],
-        "link": article.get("link", ""),
+        "link": link,
         "authors": author_list,
-        "journal": (article.get("publication") or "").strip(),
-        "citations": int(cited_by.get("value") or 0),
+        "journal": (bib.get("venue") or "").strip(),
+        "citations": int(pub.get("num_citations") or 0),
     }
 
 
+def fetch_publications():
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        print(f"Attempt {attempt}/{MAX_ATTEMPTS}: setting up free proxy...")
+        try:
+            pg = ProxyGenerator()
+            if not pg.FreeProxies():
+                raise RuntimeError("no free proxy available")
+            scholarly.use_proxy(pg)
+
+            author = scholarly.search_author_id(SCHOLAR_ID)
+            author = scholarly.fill(author, sections=["publications"])
+            pubs = author.get("publications", [])
+            if pubs:
+                print(f"Fetched {len(pubs)} publications.")
+                return pubs
+            print("No publications returned; retrying.")
+        except Exception as exc:  # noqa: BLE001 - proxies fail in many ways
+            print(f"Attempt {attempt} failed: {exc}")
+        time.sleep(5)
+    return []
+
+
 def main():
-    api_key = os.environ.get("SERPAPI_KEY")
-    if not api_key:
-        sys.exit("SERPAPI_KEY environment variable is not set")
+    pubs = fetch_publications()
+    if not pubs:
+        sys.exit("Could not fetch publications after retries; leaving file unchanged")
 
-    articles = fetch_articles(api_key)
-    if not articles:
-        sys.exit("No articles returned from SerpAPI; leaving existing file unchanged")
-
-    publications = [normalize(a) for a in articles if a.get("title")]
+    publications = [normalize(p) for p in pubs]
+    publications = [p for p in publications if p["title"]]
     publications.sort(key=lambda p: (p["date"][0] if p["date"] else 0), reverse=True)
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
