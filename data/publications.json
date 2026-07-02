@@ -8,6 +8,22 @@
     "citations": 0
   },
   {
+    "title": "SyntheticShield: Auditing Memorization and Membership Leakage in Synthetic Data Generators",
+    "date": [2026],
+    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sLSmk9AAAAAJ&citation_for_view=sLSmk9AAAAAJ:Tyk-4Ss8FVUC",
+    "authors": ["T Mahajan"],
+    "journal": "",
+    "citations": 0
+  },
+  {
+    "title": "ModelCardSec: Automated Privacy and Security Risk Profiling for Machine Learning Models",
+    "date": [2026],
+    "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sLSmk9AAAAAJ&citation_for_view=sLSmk9AAAAAJ:zYLM7Y9cAGgC",
+    "authors": ["T Mahajan"],
+    "journal": "",
+    "citations": 0
+  },
+  {
     "title": "PromptLeakDetector: Runtime Detection of System Prompt and Context Leakage in LLM Applications",
     "date": [2026],
     "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=sLSmk9AAAAAJ&citation_for_view=sLSmk9AAAAAJ:UeHWp8X0CEIC",
